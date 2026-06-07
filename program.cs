@@ -23,8 +23,10 @@ namespace algoritmos
             // var valorMouse = HashTable.ReturnProductValue(produtos, "mouse");
             // Console.WriteLine($"Valor do mouse: {valorMouse}");
 
+            Grafos.ProcuraVizinhoVendeManga();
 
-            
+
+
         }
     }
 }
