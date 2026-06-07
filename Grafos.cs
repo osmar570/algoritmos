@@ -15,14 +15,12 @@ public class Grafos
         grafo["Thom"] = [];
         grafo["Jonny"] = [];
 
-        List<string> fila = new List<string>();
-        fila.AddRange(grafo["Osmar"]);
+        var fila = new Queue<string>();
+        fila.Enqueue("Osmar");
         HashSet<string> visitados = new HashSet<string>();
         while (fila.Count > 0)
         {
-            string pessoa = fila[0];
-            fila.RemoveAt(0);
-
+            string pessoa = fila.Dequeue();
             if (!visitados.Contains(pessoa))
             {
                 if (VerificaSeVendeManga(pessoa))
@@ -32,8 +30,12 @@ public class Grafos
                 }
 
                 visitados.Add(pessoa);
-                fila.AddRange(grafo[pessoa]);
+                foreach(var vizinho in grafo[pessoa])
+                {
+                    fila.Enqueue(vizinho);
+                }
             }
+
         }
     }
 
